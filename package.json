@@ -2,9 +2,10 @@
   "name": "cookie-ctrl",
   "version": "0.0.1",
   "description": "A tiny library of operating cookie on browsers.",
-  "main": "dist/index.js",
+  "main": "dist/cookie-ctrl.js",
   "scripts": {
-    "test": "null"
+    "test": "open test/test.html",
+    "build": "webpack-cli --mode=production"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "webpack-cli": "^2.0.12"
   },
   "devDependencies": {
+    "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19"
   }
 }

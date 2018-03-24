@@ -6,6 +6,7 @@ function resolve(...pathPart) {
 
 module.exports = {
   context: resolve('.'),
+  devtool: 'source-map',
   entry: {
     'cookie-ctrl': './src/index.js'
   },
@@ -13,10 +14,10 @@ module.exports = {
     rules: [
       {
         test: /.js$/,
-        exclude: ['node_modules'],
+        exclude: [resolve('node_modules')],
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
           }
         ]
       }
