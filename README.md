@@ -3,7 +3,7 @@
 **直接通过 script 引入：**
 
 ```html
-<script></script>
+<script src="https://unpkg.com/cookie-ctrl@0.0.3/dist/cookie-ctrl.js"></script>
 ```
 
 这时会创建一个全局函数`cookies`。
@@ -56,11 +56,29 @@ cookies.set([
 
 # 读取 cookie
 
-# 读取多条 cookies
+cookies.get() 如果找到对应的值将返回一个对象，这个对象有三个属性；如果没有找到对应的值，返回 false。
+
+返回对象的三个值：
+
+* key {String} 要查找的 key 值
+* value {String} 对应的 value 值
+* isSetByCookies {boolean} 如果要查找的 cookie 是通过 cookie-ctrl 设置，则返回 true
+
+```js
+cookies.get('token');
+```
 
 # 删除一条 cookie
 
+```js
+cookies.del('token')
+```
+
 # 删除多条 cookies
+
+```js
+cookies.del(['token1', 'token2'])
+```
 
 # 设置缺省 cookie 属性
 
@@ -92,10 +110,10 @@ cookies.secure = false;
 
 ## 注意
 
-`cookie-ctrl`删除和修改的 cookie 只能限定于通过`cookie-ctrl`设置的 cookie。因为修改一条 cookie 必须要达到 key、domain、path、secure 属性完全匹配才可以，而 JavaScript 没办法读取到这些属性，所以`cookie-ctrl`无法保证通过服务器端和用户自己通过 document.cookie 设置的 cookie 进行操作。
+`cookie-ctrl`删除和修改的 cookie 只能限定于通过`cookie-ctrl`设置的 cookie。因为修改一条 cookie 必须要达到 key、domain、path、secure 属性完全匹配才可以，而 JavaScript 没办法读取到这些属性，所以`cookie-ctrl`无法保证通过服务器端和用户自己创建 document.cookie 设置的 cookie 进行操作。
 
 
-# 不可设置情况
+# cookie-ctrl 无法完成的操作
 
-* 未通过 cookies 设置的 cookie 将不能通过 cookies 设置，并给出警告
-* 通过 cookies 设置的 cookie 再次修改时，只能修改 expires maxAge，如果修改其它属性，将不会成功并给出警告。
+* 未通过 cookie-ctrl 设置的 cookie 将不能通过 cookie-ctrl 修改，并给出警告
+* 通过 cookie-ctrl 设置的 cookie 再次修改时，只能修改 expires maxAge，如果修改其它属性，cookie-ctrl 将忽略这些属性的修改并给出警告。

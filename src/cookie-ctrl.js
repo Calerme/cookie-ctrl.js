@@ -5,12 +5,6 @@ const _parseObjValue = Symbol('_parseObjValue');
 const _cookieStrCache = Symbol('_cookieStrCache');
 const _saveCookie = Symbol('_saveCookie');
 
-/**
- * @param [_cookieArr] {Array} 保存不是通过 cookies 设置的 cookie 的键值对
- * @param [_cookieArrByCookies] {Array} 保存通过 cookies 设置的 cookie 的键值对
- * @param []
- */
-
 class _Cookie {
   constructor() {
     this[_cookieStrCache] = '';
